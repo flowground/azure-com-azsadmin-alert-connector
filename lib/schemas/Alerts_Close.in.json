@@ -1,0 +1,183 @@
+{
+    "type": "object",
+    "properties": {
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "location": {
+            "required": true,
+            "type": "string"
+        },
+        "alertName": {
+            "required": true,
+            "type": "string"
+        },
+        "user": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "allOf": [
+                {
+                    "allOf": [
+                        {
+                            "description": "The core properties of ARM resources",
+                            "properties": {
+                                "id": {
+                                    "description": "Fully qualified resource Id for the resource",
+                                    "readOnly": true,
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "description": "The name of the resource",
+                                    "readOnly": true,
+                                    "type": "string"
+                                },
+                                "type": {
+                                    "description": "The type of the resource.",
+                                    "readOnly": true,
+                                    "type": "string"
+                                }
+                            },
+                            "x-ms-azure-resource": true,
+                            "type": "object"
+                        }
+                    ],
+                    "description": "The resource model definition for a ARM tracked top level resource",
+                    "properties": {
+                        "location": {
+                            "description": "The Azure Region where the resource lives",
+                            "type": "string",
+                            "x-ms-mutability": [
+                                "read",
+                                "create"
+                            ]
+                        },
+                        "tags": {
+                            "additionalProperties": {
+                                "type": "string"
+                            },
+                            "description": "Resource tags.",
+                            "type": "object",
+                            "x-ms-mutability": [
+                                "read",
+                                "create",
+                                "update"
+                            ]
+                        }
+                    },
+                    "type": "object"
+                }
+            ],
+            "description": "This object represents an alert resource.",
+            "properties": {
+                "properties": {
+                    "description": "Contains information related to alerts.",
+                    "x-ms-client-flatten": true,
+                    "properties": {
+                        "alertId": {
+                            "description": "Gets or sets the ID of the alert.",
+                            "type": "string"
+                        },
+                        "alertProperties": {
+                            "additionalProperties": {
+                                "type": "string"
+                            },
+                            "description": "Properties of the alert.",
+                            "type": "object"
+                        },
+                        "closedByUserAlias": {
+                            "description": "User alias who closed the alert.",
+                            "type": "string"
+                        },
+                        "closedTimestamp": {
+                            "description": "Timestamp when the alert was closed.",
+                            "type": "string"
+                        },
+                        "createdTimestamp": {
+                            "description": "Timestamp when the alert was created.",
+                            "type": "string"
+                        },
+                        "description": {
+                            "description": "Description of the alert.",
+                            "items": {
+                                "additionalProperties": {
+                                    "type": "string"
+                                },
+                                "description": "Dictionary of string key-value pairs.",
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "faultId": {
+                            "description": "Gets or sets the fault ID of the alert.",
+                            "type": "string"
+                        },
+                        "faultTypeId": {
+                            "description": "Gets or sets the fault type ID of the alert.",
+                            "type": "string"
+                        },
+                        "hasValidRemediationAction": {
+                            "description": "Indicates if the alert can be remediated.",
+                            "type": "boolean"
+                        },
+                        "impactedResourceDisplayName": {
+                            "description": "Display name for the impacted item.",
+                            "type": "string"
+                        },
+                        "impactedResourceId": {
+                            "description": "Gets or sets the Resource ID for the impacted item.",
+                            "type": "string"
+                        },
+                        "lastUpdatedTimestamp": {
+                            "description": "Timestamp when the alert was last updated.",
+                            "type": "string"
+                        },
+                        "remediation": {
+                            "description": "Gets or sets the admin friendly remediation instructions for the alert.",
+                            "items": {
+                                "additionalProperties": {
+                                    "type": "string"
+                                },
+                                "description": "Dictionary of string key-value pairs.",
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "resourceProviderRegistrationId": {
+                            "description": "Gets or sets the registration ID of the service the alert belongs to.",
+                            "type": "string"
+                        },
+                        "resourceRegistrationId": {
+                            "description": "Gets or sets the registration ID of the resource associated with the alert. If the alert is not associated with a resource, the resource registration ID is null.",
+                            "type": "string"
+                        },
+                        "severity": {
+                            "description": "Severity of the alert.",
+                            "type": "string"
+                        },
+                        "state": {
+                            "description": "State of the alert.",
+                            "type": "string"
+                        },
+                        "title": {
+                            "description": "Gets or sets the Resource ID for the impacted item.",
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string",
+            "default": "2016-05-01"
+        }
+    }
+}

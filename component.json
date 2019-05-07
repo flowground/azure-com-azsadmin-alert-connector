@@ -1,0 +1,118 @@
+{
+    "title": "InfrastructureInsightsManagementClient",
+    "description": "Alert operation endpoints and objects.",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/azure.com/azsadmin-Alert/2016-05-01/swagger.json",
+    "envVars": {
+        "OAUTH_CLIENT_ID": {
+            "description": "OAuth Client ID"
+        },
+        "OAUTH_CLIENT_SECRET": {
+            "description": "OAuth Client Secret"
+        }
+    },
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://adminmanagement.local.azurestack.external/",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "azure_auth": {
+                "label": "Authorization uses an Azure Active Directory OAuth2 flow.",
+                "viewClass": "OAuthFieldView"
+            }
+        },
+        "oauth2": {
+            "client_id": "{{OAUTH_CLIENT_ID}}",
+            "client_secret": "{{OAUTH_CLIENT_SECRET}}",
+            "auth_uri": "https://login.microsoftonline.com/common/oauth2/authorize"
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "Alerts_List": {
+            "main": "./lib/actions/Alerts_List.js",
+            "title": "Returns the list of all alerts in a given region.",
+            "description": "Returns the list of all alerts in a given region.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Alerts_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Alerts_Get": {
+            "main": "./lib/actions/Alerts_Get.js",
+            "title": "Returns the requested an alert.",
+            "description": "Returns the requested an alert.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Alerts_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Alerts_Close": {
+            "main": "./lib/actions/Alerts_Close.js",
+            "title": "Closes the given alert.",
+            "description": "Closes the given alert.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Alerts_Close.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Alerts_Repair": {
+            "main": "./lib/actions/Alerts_Repair.js",
+            "title": "Repairs an alert.",
+            "description": "Repairs an alert.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Alerts_Repair.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}
